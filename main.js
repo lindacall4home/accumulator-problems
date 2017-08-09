@@ -373,10 +373,13 @@ If you pass "you" it should return ["y", "o", "u"]
 NOTE: do not use the builtin `split` method
 */
 
-
-
-
-
+function split(str){
+    let arr = [];
+    for (let i = 0; i < str.length; i++){
+      arr.push(str.charAt(i));
+    }
+    return arr;
+}
 
 
 
@@ -395,7 +398,13 @@ If you pass "Hello" it should return [ 72, 101, 108, 108, 111 ]
 */
 
 
-
+function getCodePoints(str){
+  let arr = [];
+  for (let i = 0; i < str.length; i++){
+    arr.push(str.codePointAt(i));
+  }
+  return arr;
+}
 
 
 
@@ -414,11 +423,13 @@ If you pass "Yo" it should return {Y: 0, o: 1}
 If you pass "Hello" it should return {H: 0, e: 1, l: 3, o: 4}
 */
 
-
-
-
-
-
+function letterMap(str){
+  return str.split('')
+            .reduce((acc, element, index) => {
+              acc[element] = index;
+              return acc;
+            }, {});
+}
 
 
 /*
