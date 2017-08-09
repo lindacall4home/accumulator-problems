@@ -3,8 +3,8 @@
 SAMPLE
 ----------------------------------------
 
-Challenge: Write function named test that returns the string "This Works!". 
-Solution: This one has already been complete for you. 
+Challenge: Write function named test that returns the string "This Works!".
+Solution: This one has already been complete for you.
 
 */
 
@@ -26,7 +26,11 @@ Example: if you pass it [1,2,3] then it should return 6 (which is 1 + 2 + 3)
 */
 
 
-
+function sum(array){
+  return array.reduce(function(acc, val){
+    return acc + val;
+  }, 0);
+}
 
 
 
@@ -43,7 +47,11 @@ Write function named doubleNumbers that will take an array of numbers and return
 Example: if you pass it [1,2,3] then it should return [2,4,6]
 */
 
-
+function doubleNumbers(array){
+  return array.map(function(element){
+    return element * 2;
+  });
+}
 
 
 
@@ -65,7 +73,11 @@ Examples:
 - if you call multiplyNumbers([1,2,3], 5) you'd get [5,10,15]
 */
 
-
+function multiplyNumbers(array, multiplier){
+  return array.map(function(element){
+    return element * multiplier;
+  });
+}
 
 
 
@@ -83,7 +95,13 @@ Write function named doubleLetters that will take a string and double every lett
 Example: if you pass it "abc" then it should return "aabbcc"
 */
 
+function doubleLetters(string){
+  let arr = string.split("");
+  return arr.map(function(element){
+    return element + element;
+  }).join("");
 
+}
 
 
 
@@ -104,7 +122,12 @@ Example: if you pass it ["a", "b", "c"] and ["d", "e", "f"] then it should retur
 NOTE: you can assume each input will be the same length
 */
 
-
+function interleave(arr1, arr2){
+  for(let i = 0; i < arr2.length; i++){
+    arr1.splice(i * 2 + 1, 0, arr2[i]);
+  }
+  return arr1;
+}
 
 
 
@@ -124,7 +147,9 @@ Write function named createRange that will take a number and a default value and
 Example: if you pass it 4 and "Hello" then it should return ["Hello", "Hello", "Hello", "Hello"]
 */
 
-
+function createRange(number, defaultValue){
+  return Array(number).fill(defaultValue);
+}
 
 
 
@@ -143,7 +168,12 @@ Example:
 If you pass it ["quick", "brown", "fox"] then it should return { "quick": 0, "brown": 1, "fox": 2 }
 */
 
-
+function flipArray(arr){
+  return arr.reduce(function(acc, value, index){
+      acc[value] = index;
+      return acc;
+  }, {});
+}
 
 
 
@@ -163,7 +193,12 @@ If you pass it [[2014, "Horse"], [2015, "Sheep"]] then it should return { 2014: 
 
 */
 
-
+function arraysToObject(array){
+  return array.reduce(function(acc, val, index){
+    acc[val[0]] = val[1];
+    return acc;
+  }, {});
+}
 
 
 
@@ -183,9 +218,17 @@ Example:
 If you pass it "hello" then it should return "olleh"
 */
 
+function reverseString(string){
+  let reversed = "";
+  for(let i = string.length - 1; i >= 0; i--){
+    reversed =  reversed + string.charAt(i);
+  }
+  return reversed;
+}
 
-
-
+// return string.split("").reduce(function(acc, val){
+//   return val + acc;
+// }, '');
 
 
 
@@ -208,7 +251,18 @@ If you pass it "yay" then it should return false because it's odd
 If you pass it "heehaw" then it should return false because "hee" doesn't equal "haw"
 */
 
-
+function repeats(str){
+  if(str.length % 2 !== 0){
+    return false;
+  }
+  if(str.length === 0){
+    return true;
+  }
+  if(str.endsWith(str.substr(0, str.length/2))){
+    return true;
+  }
+  return false;
+}
 
 
 
@@ -227,7 +281,11 @@ Example:
 If you pass it "abcdef" then it should return "ace" because those represent every other letter
 */
 
-
+function everyOther(str){
+  return str.split('')
+            .filter((element, index) => index % 2 === 0)
+            .join('');
+}
 
 
 
@@ -248,7 +306,10 @@ If you pass "aba" it should return false
 */
 
 
-
+function allEqual(str){
+  return str.split('')
+            .every((element) => element === str.charAt(0));
+}
 
 
 
@@ -267,7 +328,10 @@ If you pass "45" it should return 9
 If you pass "246" it should return 10
 */
 
-
+function sumLetters(str){
+  return str.split('')
+     .reduce((acc, value) => acc += parseInt(value), 0);
+}
 
 
 
@@ -287,12 +351,12 @@ If you pass "you" it should return 2
 */
 
 
-
-
-
-
-
-
+function countVowels(str){
+  return str.toLowerCase()
+            .split('')
+            .reduce((acc, element) => ['a', 'e', 'i', 'o', 'u']
+            .includes(element) ? ++acc : acc, 0);
+}
 
 
 /*
@@ -794,4 +858,4 @@ If you pass {1999: 4036, 2000: 7654} and 4036, it should return true
 
 
 
-// 
+//
